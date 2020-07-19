@@ -1,20 +1,19 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 from joblib import load
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route("/", methods=['GET','POST'])
 def index():
 
-    if "query" not in request.args:
-        return jsonify({"Prediction": None, "message":"Send me a text"})
+    predictin =''
     
-    query= request.args.get("query")
-    
-    #pegando a classificador identificada pelo modelo
-    predictin = process_model(query)
+    if request.method == 'POST':
+        query = request.form['query']    
+        predictin = process_model(query)
 
-    return jsonify({"prediction": predictin})
+    return render_template('index.html',predictin=predictin)
+
 
 def process_model(query):
 
@@ -29,3 +28,7 @@ def process_model(query):
     predictin = model_class[predict[0]]
 
     return predictin
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
