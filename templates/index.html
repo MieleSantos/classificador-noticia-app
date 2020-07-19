@@ -1,23 +1,30 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Classificador de Notícias</title>
-</head>
-<body>
-    <form action="" method="post">
-        <label >Informe uma Notícia</label><br>
-        <input type="text" name="query" id="">
-        <input type="submit" value="Consultar">
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">  
+    <h2>{% block title %} Notícia {% endblock %}</h2>
+
+    <p class="container">O classificado de notícia foi treinado para identificar se a notícia pertence as seguites classes:<br> <b>Carros, Economia, Educação, Esporte, Musica e Política </b></p>
+    
+    <form method="post">
+
+        <div class="form-group">
+            <textarea name="query" placeholder="Informe uma Notícia"
+                    class="form-control">{{ request.form['query'] }}</textarea>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Consultar</button>
+        </div>
     </form>
 
+</div>
+{% if predictin %}
     
-    {% block content %}
-        {% if predictin %}
-            <p><b>Resultado da classificação</b></p>
-            <p>{{ predictin }}</p>
-        {%endif%}
-    {% endblock %}
-</body>
-</html>
+    <label><b>Resultado da classificação:</b> {{ predictin }} </label>
+
+{%endif%}
+
+{% endblock %}
+
+

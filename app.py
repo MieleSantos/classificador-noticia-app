@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request, render_template
+from flask import Flask, jsonify, request, render_template, redirect, url_for
 from joblib import load
 
 app = Flask(__name__)
@@ -7,12 +7,15 @@ app = Flask(__name__)
 def index():
 
     predictin =''
-    
     if request.method == 'POST':
-        query = request.form['query']    
-        predictin = process_model(query)
 
-    return render_template('index.html',predictin=predictin)
+        query = request.form['query']    
+        if query:
+            predictin = process_model(query)
+            return render_template('index.html',predictin=predictin)
+    else:
+        return render_template('index.html' )
+
 
 
 def process_model(query):
