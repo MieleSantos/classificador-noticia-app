@@ -1,8 +1,6 @@
 # classificador-noticia-app
 
-Servidor web para executa o classificar de noticia
-Foi usado flask, python e o deploy foi dado no heroku
+- Servidor web para executa o classificar de noticia
 
-Proximas melhorias
-
- - criar uma pagina html para receber a noticia e exibir a classificação que o modelo sugeriu 
+    Para seu desenvolvimento foi usado flask, python e o deploy foi dado no heroku
+    o modelo foi gerando usando python, scikit-learn e o jupyter-lab
