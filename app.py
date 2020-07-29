@@ -3,19 +3,30 @@ from joblib import load
 
 app = Flask(__name__)
 
-@app.route("/", methods=['GET','POST'])
+@app.route("/")
 def index():
+    return render_template('index.html' )
 
-    predictin =''
+    # predictin =''
+    # if request.method == 'POST':
+
+    #     query = request.form['query']    
+    #     if query:
+    #         predictin = process_model(query)
+    #         return render_template('index.html',predictin=predictin)
+    # else:
+    #     return render_template('index.html' )
+
+
+@app.route("/process", methods=['GET','POST'])
+def process():
+
     if request.method == 'POST':
 
-        query = request.form['query']    
-        if query:
-            predictin = process_model(query)
-            return render_template('index.html',predictin=predictin)
-    else:
-        return render_template('index.html' )
+        query = request.form['query']         
+        predictin = process_model(query)
 
+    return render_template('result.html', query=query ,predictin=predictin)
 
 
 def process_model(query):
