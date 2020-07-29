@@ -1,7 +1,7 @@
 # Classificador de Notícias
 
 Servidor web para executa o classificar de notícia
-        <p>O classificado de notícia foi treinado para identificar se a notícia pertence as seguites classes:<br> <b>Carros, Economia, Educação, Esporte, Musica e Política </p>
+        <p>O classificado de notícia foi treinado para identificar se a notícia pertence as seguites classes:<br> <b>Carros, Economia, Educação, Esporte, Musica e Política</b> </p>
     
 <p>Para seu desenvolvimento foi usado:</p>
     
