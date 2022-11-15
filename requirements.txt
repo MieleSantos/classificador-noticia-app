@@ -4,4 +4,4 @@
 Flask == 1.1.2
 
 # classificador-noticia-app/app.py: 2
-joblib == 0.14.1
+joblib == 1.2.0
